@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大厂白领社畜老刘</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Noto+Sans+Mono+SC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/crt.css">
+</head>
+<body>
+  <div id="crt">
+    <div id="screen">
+      <div id="status" class="box">
+        <span id="st-score"></span>
+        <span id="st-title">大 厂 白 领 社 畜 老 刘</span>
+        <span id="st-right"></span>
+      </div>
+      <pre id="art" class="box"></pre>
+      <div id="panel" class="box">
+        <div id="loc"></div>
+        <div><span class="lbl">可交互：</span> <span id="see"></span></div>
+        <div><span class="lbl">附近出口：</span> <span id="exits"></span></div>
+        <div><span class="lbl">跨区前往：</span> <span id="travel"></span> <span class="dim">（输入 MAP 查看地图）</span></div>
+      </div>
+      <div id="log" class="box" aria-live="polite"></div>
+      <div id="promptline">
+        <span class="caret">&gt;</span>
+        <input id="cmd" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="英文指令">
+        <button id="snd" type="button" title="切换音效；也可输入 SOUND ON/OFF"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/registry.js"></script>
+  <script src="js/content/world.js"></script>
+  <script src="js/content/items.js"></script>
+  <script src="js/content/home.js"></script>
+  <script src="js/content/work.js"></script>
+  <script src="js/content/costco.js"></script>
+  <script src="js/content/music.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
