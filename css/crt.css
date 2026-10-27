@@ -52,7 +52,7 @@ body {
 }
 
 #screen {
-  width: min(80ch, calc(100vw - 48px));
+  width: min(800px, calc(100vw - 72px));
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -74,21 +74,14 @@ body {
 
 #art {
   margin: 0;
-  height: calc(16 * 1.05em + 8px);
-  overflow: hidden;
-  white-space: pre;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  display: block;
+  background: #000;
+  image-rendering: pixelated;
 }
-
-#art.title {
-  font-family: 'Noto Sans Mono SC', 'NSimSun', 'SimSun', monospace;
-  font-size: min(0.65em, 1.8vw);
-}
-
-#art.death { color: #ff6a3d; text-shadow: 0 0 6px rgba(255, 80, 40, 0.6); }
 
 #panel div { margin: 1px 0; }
 #loc { font-weight: bold; letter-spacing: 1px; }
@@ -128,6 +121,7 @@ body {
 
 #cmd {
   flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   outline: none;
@@ -159,6 +153,5 @@ body {
   #crt { margin: 6px; padding: 10px 8px; }
   #screen { width: calc(100vw - 36px); }
   #status { gap: 6px; font-size: 0.9em; }
-  #art { font-size: min(1.9vw, 15px); }
   #panel { overflow-wrap: anywhere; }
 }

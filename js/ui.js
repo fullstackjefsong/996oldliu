@@ -106,28 +106,21 @@
     const v = E.view();
     $('st-score').textContent = `得分：${v.score}/${v.maxScore}`;
     $('st-right').textContent = `${v.time}  ${v.money}`;
-    const art = $('art');
-    art.classList.remove('title');
-    art.classList.toggle('death', !!v.dead);
-    if (v.dead) art.textContent = LSJ.config.deathArt + '\n\n' + centered(v.dead.title);
-    else if (v.ended) art.textContent = LSJ.config.endArt;
-    else art.textContent = v.art.replace(/^\n/, '');
-    $('loc').textContent = v.dead ? '*** 游戏结束 ***' : v.title;
+    const scene = v.dead ? 'death' : v.ended ? 'ending' : E.state.room;
+    const description = v.dead ? '游戏结束：' + v.dead.title : v.ended ? v.ended.title : v.title;
+    LSJ.Graphics.draw($('art'), scene, E.state);
+    $('art').setAttribute('aria-label', description + '。场景说明、可交互对象和出口列在下方。');
+    $('loc').textContent = description;
     fillChips($('see'), v.objects, tokenLabel, (o) => insertNoun(o.command));
     fillChips($('exits'), v.exits, tokenLabel, (e) => run('go ' + e.command));
     fillChips($('travel'), v.travel, tokenLabel, (t) => run('go to ' + t.command));
   }
 
-  function centered(s) {
-    const pad = Math.max(0, Math.floor((60 - s.length) / 2));
-    return ' '.repeat(pad) + s;
-  }
-
   function showTitle() {
     onTitle = true;
-    $('art').classList.add('title');
-    $('art').textContent = LSJ.config.titleArt.replace(/^\n/, '');
-    $('loc').textContent = '一款中文文字冒险游戏';
+    LSJ.Graphics.draw($('art'), 'title');
+    $('art').setAttribute('aria-label', '标题画面：戴着眼镜、穿格子衬衫的老刘，在夜晚的办公室守着电脑、周报和咖啡。');
+    $('loc').textContent = '第一幕：消失的工资条';
     $('see').textContent = '';
     $('exits').textContent = '';
     $('travel').textContent = '';
@@ -191,10 +184,10 @@
   });
 
   document.addEventListener('click', (e) => {
-    if (!window.getSelection().toString() && !e.target.classList.contains('chip')) cmd.focus();
+    if (!window.getSelection().toString() && !e.target.classList.contains('chip')) cmd.focus({ preventScroll: true });
   });
 
   showTitle();
   updateSoundButton();
-  cmd.focus();
+  cmd.focus({ preventScroll: true });
 })();
