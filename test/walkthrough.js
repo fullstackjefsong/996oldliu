@@ -55,6 +55,12 @@ check('title/death/end art fits', () => {
   }
 });
 
+check('illustrated title has an aligned 78x16 frame', () => {
+  const lines = LSJ.config.titleArt.replace(/^\n/, '').split('\n');
+  assert.strictEqual(lines.length, 16);
+  lines.forEach((line, i) => assert.strictEqual(displayWidth(line), 78, `title row ${i + 1}`));
+});
+
 check('Chinese interface keeps English command tokens visible', () => {
   E.start();
   const v = E.view();

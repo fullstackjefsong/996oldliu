@@ -107,6 +107,7 @@
     $('st-score').textContent = `得分：${v.score}/${v.maxScore}`;
     $('st-right').textContent = `${v.time}  ${v.money}`;
     const art = $('art');
+    art.classList.remove('title');
     art.classList.toggle('death', !!v.dead);
     if (v.dead) art.textContent = LSJ.config.deathArt + '\n\n' + centered(v.dead.title);
     else if (v.ended) art.textContent = LSJ.config.endArt;
@@ -124,6 +125,7 @@
 
   function showTitle() {
     onTitle = true;
+    $('art').classList.add('title');
     $('art').textContent = LSJ.config.titleArt.replace(/^\n/, '');
     $('loc').textContent = '一款中文文字冒险游戏';
     $('see').textContent = '';
