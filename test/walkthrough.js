@@ -170,6 +170,13 @@ check('Canvas output uses opaque palette pixels without smoothing', () => {
   }
 });
 
+check('walkthrough.html screenshots name real EGA scenes', () => {
+  const html = fs.readFileSync(path.join(root, 'walkthrough.html'), 'utf8');
+  const scenes = [...html.matchAll(/data-room="([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(scenes.length >= 4, 'expected EGA screenshots in walkthrough.html');
+  scenes.forEach((s) => assert.ok(LSJ.Graphics.scenes.includes(s), 'unknown scene in walkthrough.html: ' + s));
+});
+
 check('all score ids are reachable keys & exits valid', () => {
   for (const r of Object.values(LSJ.rooms)) for (const e of r.exits || []) {
     assert.ok(LSJ.rooms[e.to], `${r.id} exit -> ${e.to}`);

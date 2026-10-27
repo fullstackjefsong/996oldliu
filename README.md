@@ -4,6 +4,8 @@
 
 **在线游玩：** https://fullstackjefsong.github.io/996oldliu/
 
+**完全攻略：** [《电子游戏天地》1993年11月号·攻略秘技](https://fullstackjefsong.github.io/996oldliu/walkthrough.html)（仿九十年代初国内游戏杂志的130分满分攻略，附 EGA 截图和戏仿广告）
+
 ## 怎么玩
 
 画面和剧情使用简体中文，操作输入英文指令。无需中文输入法。点击画面下方的物品、出口或地点，会自动填入可用的英文代号。
